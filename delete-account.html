@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your PesaLens account</title>
+<meta name="description" content="How to delete your PesaLens account and all associated data, in the app or by request.">
+<style>
+  :root { --forest:#065F46; --green:#059669; --ink:#0F172A; --slate:#64748B; --line:#E2E8F0; --bg:#F8FAFC; }
+  * { box-sizing: border-box; }
+  body { margin:0; font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:linear-gradient(135deg, var(--forest), #10B981); color:#fff; padding:40px 16px; }
+  header .wrap, main { max-width:760px; margin:0 auto; padding:0 16px; }
+  header h1 { margin:0 0 6px; font-size:28px; }
+  header p { margin:0; opacity:.9; }
+  main { background:#fff; margin-top:-16px; margin-bottom:48px; padding:24px 16px 40px; border-radius:12px; border:1px solid var(--line); }
+  h2 { font-size:20px; margin:32px 0 8px; color:var(--forest); }
+  ol li, ul li { margin:6px 0; }
+  .note { background:#FFF7ED; border:1px solid #FDBA74; border-radius:8px; padding:12px 14px; margin:12px 0; }
+  a { color:var(--green); }
+  .button { display:inline-block; background:var(--ink); color:#fff; text-decoration:none; padding:12px 18px; border-radius:10px; font-weight:600; }
+  footer { text-align:center; color:var(--slate); font-size:13px; padding-bottom:32px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Delete your PesaLens account</h1>
+  <p>Developer: PesaLens · App: PesaLens (<code>com.expensetracker.app</code>)</p>
+</div></header>
+
+<main>
+<p>You can delete your account and everything linked to it at any time. There are two ways.</p>
+
+<h2>Option 1: in the app (immediate)</h2>
+<ol>
+  <li>Open PesaLens and sign in.</li>
+  <li>On the Dashboard, tap the <strong>gear icon</strong> in the top-right corner.</li>
+  <li>Tap <strong>Delete account</strong> and confirm.</li>
+</ol>
+<p>Your cloud backup and your sign-in are deleted straight away, and the transactions stored on the phone are cleared. You are returned to the welcome screen.</p>
+
+<h2>Option 2: by email (if you no longer have the app)</h2>
+<p>Send a request from the Google account email you used to sign in, so we can verify it is you:</p>
+<p><a class="button support-mailto" href="#">Email a deletion request</a></p>
+<p>Subject: <em>Delete my PesaLens account</em>. No other details are needed. We confirm by reply and complete the deletion within 30 days, usually much sooner.</p>
+
+<h2>What is deleted</h2>
+<ul>
+  <li>Your account (Firebase Authentication user).</li>
+  <li>All transactions backed up to our servers.</li>
+  <li>Categories you created.</li>
+  <li>When done in the app: the local database on that phone, including any stored SMS alert text. If you deleted by email instead, uninstall the app to remove local data.</li>
+</ul>
+
+<h2>What is kept</h2>
+<ul>
+  <li>Nothing tied to you. Residual copies in server backups are purged within 30 days, and routine server logs expire within 30 days.</li>
+</ul>
+
+<div class="note"><strong>Deletion cannot be undone.</strong> If you reinstall PesaLens later and sign in with the same Google account, you start with an empty history.</div>
+
+<p>See the <a href="privacy-policy.html">Privacy Policy</a> for full details on the data we handle.</p>
+</main>
+
+<footer>© 2026 PesaLens · <a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a></footer>
+
+<script>
+  // Single place to set the public support address. Keep in step with EXPO_PUBLIC_SUPPORT_EMAIL.
+  var SUPPORT_EMAIL = "set-me@example.com";
+  document.querySelectorAll(".support-mailto").forEach(function (a) {
+    a.href = "mailto:" + SUPPORT_EMAIL + "?subject=" + encodeURIComponent("Delete my PesaLens account");
+    a.textContent = "Email " + SUPPORT_EMAIL;
+  });
+</script>
+</body>
+</html>
