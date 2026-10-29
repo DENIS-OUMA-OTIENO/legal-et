@@ -28,7 +28,7 @@
 <body>
 <header><div class="wrap">
   <h1>PesaLens Privacy Policy</h1>
-  <p>Effective 15 October 2026 · Applies to the PesaLens Android app (package <code>com.expensetracker.app</code>)</p>
+  <p>Effective 29 October 2026 · Applies to the PesaLens Android app (package <code>com.expensetracker.app</code>)</p>
 </div></header>
 
 <main>
@@ -40,16 +40,18 @@
 <table>
 <tr><th>Data</th><th>Where it comes from</th><th>Where it is stored</th><th>Why</th></tr>
 <tr><td><strong>Account details</strong>: name, email address, profile photo URL, Firebase user ID</td><td>Google Sign-In through Firebase Authentication</td><td>Firebase Authentication (Google) and, as the owner ID, in our database</td><td>To create your account, keep you signed in and tie your backup to you</td></tr>
-<tr><td><strong>Incoming SMS alerts</strong></td><td>Android <code>RECEIVE_SMS</code> permission, only after you accept the in-app explanation</td><td>Processed on the device. Messages that match a mobile-money alert are kept in the app's private database on your phone for your reference; all other messages are discarded immediately</td><td>To create an expense entry without manual typing</td></tr>
+<tr><td><strong>Mobile-money SMS alerts</strong></td><td>Android <code>RECEIVE_SMS</code> permission (new alerts as they arrive) and <code>READ_SMS</code> permission (a one-time look-up of your five most recent M-Pesa alerts when you set up a new account), only after you accept the in-app explanation</td><td>Processed on the device. Messages that match a mobile-money alert are kept in the app's private database on your phone for your reference; all other messages are discarded immediately</td><td>To create an expense entry without manual typing</td></tr>
 <tr><td><strong>Transaction details</strong>: amount, currency, merchant or recipient, category, date and time, transaction reference, source ("sms"), optional notes</td><td>Extracted on the device from a matching alert, or edited by you</td><td>On your phone and, when online, in our cloud database linked to your Firebase user ID</td><td>Backup and restore across devices, transaction list, monthly analytics</td></tr>
 <tr><td><strong>Categories and merchant rules</strong> you create</td><td>You</td><td>Category names are synced to our database; merchant-to-category rules stay on the device</td><td>Automatic categorisation that remembers your choices</td></tr>
 <tr><td><strong>Technical data</strong>: IP address, request timestamps, device and app identifiers used by Firebase for sign-in security</td><td>Automatically when the app contacts Firebase or our server</td><td>Firebase (Google) and short-lived server logs</td><td>Security, abuse prevention and debugging</td></tr>
 </table>
 
 <h2>2. The SMS permission</h2>
-<p>PesaLens requests the Android <code>RECEIVE_SMS</code> permission for a single purpose: detecting mobile-money transaction alerts (for example M-Pesa "Confirmed…" messages) as they arrive, including while the app is closed, so each payment becomes an expense automatically. The app does not request <code>READ_SMS</code> and does not read your inbox.</p>
+<p>PesaLens requests the Android <code>RECEIVE_SMS</code> and <code>READ_SMS</code> permissions for a single purpose: turning mobile-money transaction alerts (for example M-Pesa "Confirmed…" messages) into expenses automatically.</p>
 <ul>
-  <li>Every incoming message is checked on the device. Messages that are not a mobile-money transaction alert are ignored and never stored or transmitted.</li>
+  <li><code>RECEIVE_SMS</code> detects alerts as they arrive, including while the app is closed, so each payment becomes an expense without typing.</li>
+  <li><code>READ_SMS</code> is used once, when you set up a new account that has no history to restore: the app looks up the messages from the M-Pesa sender in your inbox and imports your five most recent payments so your dashboard does not start empty. It does not scan the rest of your inbox and never imports your full message history.</li>
+  <li>Every message the app looks at is checked on the device. Messages that are not a mobile-money transaction alert are ignored and never stored or transmitted.</li>
   <li>The text of a matching alert stays in the app's private storage on your phone. <strong>It is never uploaded to our servers or shared with anyone.</strong></li>
   <li>Our use of SMS data follows Google Play's SMS and Call Log permissions policy under the "SMS-based money management" exception. SMS data is used only to provide this feature. It is not used for advertising, analytics, profiling, or any other purpose, and it is not sold or shared.</li>
   <li>You can withdraw the permission at any time in Android Settings → Apps → PesaLens → Permissions. The app keeps working; you simply stop getting automatic capture.</li>
@@ -102,7 +104,7 @@
 
 <script>
   // Single place to set the public support address. Keep in step with EXPO_PUBLIC_SUPPORT_EMAIL.
-  var SUPPORT_EMAIL = "azssed13@gmail.com";
+  var SUPPORT_EMAIL = "set-me@example.com";
   document.querySelectorAll(".support-email").forEach(function (a) {
     a.textContent = SUPPORT_EMAIL;
     a.href = "mailto:" + SUPPORT_EMAIL;
